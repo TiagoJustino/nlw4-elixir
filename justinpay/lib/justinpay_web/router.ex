@@ -10,6 +10,9 @@ defmodule JustinpayWeb.Router do
 
     get "/:filename", WelcomeController, :index
     post "/users", UsersController, :create
+
+    post "/accounts/deposit/:id", AccountsController, :deposit
+    post "/accounts/withdraw/:id", AccountsController, :withdraw
   end
 
   # Enables LiveDashboard only for development
