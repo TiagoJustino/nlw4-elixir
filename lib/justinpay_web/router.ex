@@ -13,6 +13,7 @@ defmodule JustinpayWeb.Router do
 
     post "/accounts/deposit/:id", AccountsController, :deposit
     post "/accounts/withdraw/:id", AccountsController, :withdraw
+    post "/accounts/transaction/:id", AccountsController, :transaction
   end
 
   # Enables LiveDashboard only for development
