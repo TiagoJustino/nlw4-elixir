@@ -8,9 +8,6 @@ defmodule Justinpay.Users.Create do
     |> Multi.run(:create_account, &insert_account/2)
     |> Multi.run(:preload_data, &preload_data/2)
     |> run_transaction()
-    # params
-    # |> User.changeset()
-    # |> Repo.insert()
   end
 
   defp insert_account(repo, %{create_user: user}) do

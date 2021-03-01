@@ -18,6 +18,10 @@ config :justinpay, JustinpayWeb.Endpoint,
   pubsub_server: Justinpay.PubSub,
   live_view: [signing_salt: "ApytQvhK"]
 
+config :justinpay, :basic_auth,
+  username: "banana",
+  password: "nanica"
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

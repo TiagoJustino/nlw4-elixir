@@ -1,8 +1,14 @@
 defmodule JustinpayWeb.Router do
   use JustinpayWeb, :router
 
+  import Plug.BasicAuth
+
   pipeline :api do
     plug :accepts, ["json"]
+  end
+
+  pipeline :auth do
+    plug :basic_auth, Application.compile_env(:justinpay, :basic_auth)
   end
 
   scope "/api", JustinpayWeb do
@@ -10,6 +16,10 @@ defmodule JustinpayWeb.Router do
 
     get "/:filename", WelcomeController, :index
     post "/users", UsersController, :create
+  end
+
+  scope "/api", JustinpayWeb do
+    pipe_through [:api, :auth]
 
     post "/accounts/deposit/:id", AccountsController, :deposit
     post "/accounts/withdraw/:id", AccountsController, :withdraw

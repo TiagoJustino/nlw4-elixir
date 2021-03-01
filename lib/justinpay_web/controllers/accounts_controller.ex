@@ -7,7 +7,6 @@ defmodule JustinpayWeb.AccountsController do
 
   def deposit(conn, params) do
     with {:ok, %Account{} = account} <- Justinpay.deposit(params) do
-      IO.inspect(account)
       conn
       |> put_status(:ok)
       |> render("update.json", account: account)
